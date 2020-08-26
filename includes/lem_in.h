@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/08/25 16:00:12 by user             ###   ########.fr       */
+/*   Updated: 2020/08/26 19:58:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,29 @@
 
 # include <errno.h>
 # include <stdlib.h>
+# include <stdio.h>
+
 # include "libft.h"
+
+
+/*
+**	Error messages
+*/
+
+# define NO_ANTS	"ERROR: No ants on input"
+# define BIG_ANT	"ERROR: Ants count is bigger then int"
+# define READ_ERR	"ERROR: Reading error occured"
+
+/*
+** Other defines
+*/
+
+# define MAXINT_LEN 10
+
+
+/*
+**	Structures
+*/
 
 typedef struct s_links		t_links;
 typedef struct s_room		t_room;
@@ -53,5 +75,21 @@ struct				s_frame
 	int				num_rooms;
 };
 
+
+/*
+**	Functions
+*/
+
+t_room				*parse_input(t_frame *stor, t_input *input);
+void				lem_error(char *str);
+int					is_valid_ants(char *str);
+
+
+
+/*
+**	JUST FOR TESTING ********************** DELETE
+*/ 
+
+void				print_input(t_input *input);
 
 #endif

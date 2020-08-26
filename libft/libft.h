@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbdoogls <jbdoogls@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:22:48 by edoll             #+#    #+#             */
-/*   Updated: 2020/06/01 14:34:40 by jbdoogls         ###   ########.fr       */
+/*   Updated: 2020/08/25 23:01:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,9 @@ typedef struct	s_list_gnl
 	struct s_list_gnl	*next;
 }				t_gnl;
 
-int				get_next_line(const int fd, char **line);
+int				get_next_line(const int fd, char **line, int clean);
 t_gnl			*ft_lstnewset(int fd);
 char			*ft_strjoin_free(char *s1, char const *s2);
+int				clean_gnl_cache(t_gnl *lst);
 
 #endif

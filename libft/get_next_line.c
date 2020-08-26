@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbdoogls <jbdoogls@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 17:11:38 by edoll             #+#    #+#             */
-/*   Updated: 2020/05/07 13:57:14 by jbdoogls         ###   ########.fr       */
+/*   Updated: 2020/08/25 23:03:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,15 @@ int		set_list(t_gnl **list, t_gnl **l_head, int fd)
 	return (1);
 }
 
-int		get_next_line(int const fd, char **line)
+int		get_next_line(int const fd, char **line, int clean)
 {
 	static t_gnl	*list;
 	t_gnl			*l_head;
 	size_t			ret;
 	char			buff[BUFF_SIZE + 1];
 
+	if (clean)
+		return (clean_gnl_cache(list));
 	if (fd < 0 || BUFF_SIZE <= 0 || !line || read(fd, NULL, 0) < 0)
 		return (-1);
 	if (set_list(&list, &l_head, fd) == -1)

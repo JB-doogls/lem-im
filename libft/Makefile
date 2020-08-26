@@ -85,7 +85,8 @@ FUNCTIONS = ft_memset \
 			ft_lstinsert_after \
 			ft_lstnewset \
 			ft_strjoin_free \
-			get_next_line
+			get_next_line \
+			get_next_line_clean
 
 OBJ		= $(patsubst %,%.o,$(FUNCTIONS))
 SRC		= $(patsubst %,%.c,$(FUNCTIONS))
