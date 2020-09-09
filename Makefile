@@ -6,7 +6,7 @@
 #    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/08/26 19:55:57 by user             ###   ########.fr        #
+#    Updated: 2020/09/09 19:44:49 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ_DIR		= ./obj/
 INC_DIR 	= ./includes/
 
 # ----- Lists -----
-FUNCS		= lem_in.c parse.c utils.c \
+FUNCS		= lem_in.c parse.c utils.c handle_rooms.c handle_links.c \
 				\
 				tmp_tools.c
 

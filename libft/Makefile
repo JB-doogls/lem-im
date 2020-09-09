@@ -38,6 +38,7 @@ FUNCTIONS = ft_memset \
 			ft_isalnum \
 			ft_isascii \
 			ft_isprint \
+			ft_isint \
 			ft_toupper \
 			ft_tolower \
 			ft_memalloc \
@@ -105,7 +106,7 @@ EOC		= "\033[0m"
 all: $(NAME)
 
 $(OBJ): %.o : %.c
-	$(CC) $(CFLAGS) -c $<
+	@ $(CC) $(CFLAGS) -c $<
 
 $(NAME): $(OBJ)
 	@echo $(GREEN) "object files libft created" $(EOC)

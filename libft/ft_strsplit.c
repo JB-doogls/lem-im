@@ -3,14 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbdoogls <jbdoogls@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 16:38:28 by edoll             #+#    #+#             */
-/*   Updated: 2020/06/01 00:16:40 by jbdoogls         ###   ########.fr       */
+/*   Updated: 2020/08/28 00:50:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+**	Function to handle splited arrays
+*/
+
+int			ft_len_splited(char **split)
+{
+	int		i;
+
+	i = 0;
+	while (split[i])
+		i++;
+	return (i);
+}
+
+void		ft_free_splited(char **split)
+{
+	int		i;
+
+	i = 0;
+	if (!split || !*split)
+		return;
+	while (split[i])
+		free (split[i++]);
+	free(split);
+	return;	
+}
+
+/*
+**	Strsplit functions
+*/
 
 static char		*get_word(const char *s, char c)
 {

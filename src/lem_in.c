@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/08/26 17:04:30 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 01:43:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,41 +25,40 @@ t_input		*create_input_item(char *line)
 
 t_input		*read_input()
 {
-	t_input		*item;
+	t_input		*input;
 	t_input		*tmp;
 	char		*line;
 
-	item = NULL;
+	input = NULL;
 	while (get_next_line(0, &line, 0))
 	{
-		if (!item)
+		if (!input)
 		{
-			if ((!(item = create_input_item(line)) && get_next_line(0, NULL, 1))
-			|| !(tmp = item))
+			if ((!(input = create_input_item(line)) && get_next_line(0, NULL, 1))
+			|| !(tmp = input))
 				return (NULL);
 		}
 		else
 		{
-			if ((!(tmp->next = create_input_item(line)) && get_next_line(0, NULL,1))
+			if ((!(tmp->next = create_input_item(line)) && get_next_line(0, NULL, 1))
 			|| !(tmp = tmp->next))
 				return (NULL);
 		}
 	}
 	get_next_line(0, NULL, 1);
-	return (item);
+	return (input);
 }
 
 void		lem_in()
 {
-	t_room		*rooms;
-	t_frame		stor;
+	t_room		*map;
 	t_input		*input;
 
 	if (!(input = read_input()))
 		lem_error(READ_ERR);
-	rooms = parse_input(&stor, input);
+	map = parse_input(input);
 	
-	print_input(input);
+	// print_input(input);
 
 }
 

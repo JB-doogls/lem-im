@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:22:48 by edoll             #+#    #+#             */
-/*   Updated: 2020/08/25 23:01:46 by user             ###   ########.fr       */
+/*   Updated: 2020/08/28 00:50:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,12 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 int				ft_iswspace(int c);
 char			*ft_strrev(char *str);
-char			**ft_strsplit(char const *s, char c);
 int				ft_word_count(char const *s, char c);
+
+char			**ft_strsplit(char const *s, char c);
+int				ft_len_splited(char **split);
+void			ft_free_splited(char **split);
+
 char			*ft_itoa(int n);
 char			*ft_itoa_base(unsigned long int nbr, unsigned int base);
 int				ft_itoa_base_count(unsigned long int nbr, unsigned int base);
@@ -85,6 +89,10 @@ void			ft_putnbr(int n);
 /*
 **	NUMBER FUNCTIONS
 */
+
+# define MAXINT_LEN 10
+# define MININT_LEN 11
+
 int				ft_atoi(const char *pt);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
@@ -95,8 +103,11 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 long			ft_long_power(long n, long power);
 int				ft_power(int n, int power);
+
 unsigned int	ft_nbrmax(unsigned int x, unsigned int y);
 unsigned int	ft_nbrmin(unsigned int x, unsigned int y);
+int				ft_isint_str(char *str);
+int				ft_isposint_str(char *str);
 
 /*
 **	LIST FUNCTIONS
