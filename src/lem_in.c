@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 22:23:13 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 01:12:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ t_frame		*create_map()
 		lem_error(READ_ERR, NULL);
 	}
 	stor = init_storage(&input);
-	if (!(map = parse_input(input, stor)) || !check_parsing(stor))
-		lem_error(INP_ERR, stor);
-	stor->map_copy = stor->map;
+	if (!(map = parse_input(input, stor)) || !is_valid_map(stor))
+		lem_error(NOT_ENOUGH_ERR, stor);
 	// lem_free(stor);
 	return (stor);
 }

@@ -34,16 +34,85 @@ r3-r5
 ############### FAIL ###############
 
 ## empty line
-
 123
 r0 2 4
 
 r1 6 4
-La 7 8
 
+## room start with 'L'
+123
+r0 2 4
+r1 6 4
+La 7 8
+123
+r9 8 4
+##start
+r6 4 2
+r12 7 4
+r9-r12
+r9-r6
+
+## num of ants is bigger then MAX_INT
+2147483648
+##end
+r9 8 4
+##start
+r6 4 2
+r12 7 4
+r9-r12
+r9-r6
+
+## num of ants equal '0'
+0
+##end
+r9 8 4
+##start
+r6 4 2
+r12 7 4
+r9-r12
+r9-r6
+
+## no ants
+##end
+r9 8 4
+##start
+r6 4 2
+r12 7 4
+r9-r12
+r9-r6
+
+## no rooms
+123
+r9-r12
+r9-r6
+
+## no links
+123
+##end
+r9 8 4
+##start
+r6 4 2
+r12 7 4
+
+## no ##start
+123
+##end
+r9 8 4
+r6 4 2
+r12 7 4
+r9-r12
+r9-r6
+
+## no ##end
+123
+r9 8 4
+##start
+r6 4 2
+r12 7 4
+r9-r12
+r9-r6
 
 ## 2 cmd ##start
-
 234
 ##start
 r1 9 4
@@ -55,7 +124,6 @@ r2 3 1
 
 
 ## 2 cmd ##end
-
 234
 ##start
 r1 9 4
@@ -64,3 +132,21 @@ r6 4 1
 r9 5 4
 ##end
 r2 3 1
+
+## duplicate rooms name
+123
+##end
+r9 8 4
+##start
+r6 4 2
+r6 7 4
+r9-r6
+
+##duplicate rooms coords
+123
+##end
+r9 8 4
+##start
+r6 4 2
+r12 4 2
+r9-r6

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 23:25:28 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 01:03:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void		parse_start_end(char *line, t_frame *stor)
 	if (line && !ft_strcmp(line, "##start"))
 	{
 		if (stor->start)
-			lem_error(CMD_ERR_ST, stor);
+			lem_error(CMD_ST_ERR, stor);
 		stor->cmd = START_SIG;
 	}
 	if (line && !ft_strcmp(line, "##end"))
 	{
 		if (stor->end)
-			lem_error(CMD_ERR_END, stor);
+			lem_error(CMD_END_ERR, stor);
 		stor->cmd = END_SIG;
 	}
 }
@@ -58,7 +58,7 @@ t_frame		*init_storage(t_input **input)
 t_room		*parse_input(t_input *input, t_frame *stor)
 {
 	if (!input)
-		lem_error(READ_ERR, stor);
+		return (NULL);
 	while (input)
 	{
 		if (is_hash(input->line, stor))
@@ -74,6 +74,7 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 		}
 		input = input->next;
 	}
+	stor->map_copy = stor->map;
 	// JUST FOR TESTING ***** DELETE
 	// print_room_list(stor, stor->map ? stor->map : NULL);
 	return (stor->map);

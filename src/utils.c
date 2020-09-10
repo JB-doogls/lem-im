@@ -6,17 +6,17 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 22:17:33 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 00:58:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-**	Check input funcs
+**	Validation funcs
 */
 
-int			check_parsing(t_frame *stor)
+int			is_valid_map(t_frame *stor)
 {
 	if (!stor)
 		return (0);

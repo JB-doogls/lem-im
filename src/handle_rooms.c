@@ -6,11 +6,20 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 23:08:49 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 00:40:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+static int		is_room_duplicates(t_room *room, t_room *new_room)
+{
+	if (!ft_strcmp(new_room->name, room->name) ||
+		(new_room->coord[0] == room->coord[0] && 
+		new_room->coord[1] == room->coord[1]))
+		return (1);
+	return (0);
+}
 
 static void		get_start_end_room(t_frame *stor, t_room *room)
 {
@@ -76,9 +85,15 @@ t_room			*add_room(t_room *room, t_room *new_room, t_frame *stor)
 	if (!room)
 		return (new_room);
 	tmp = room;
-	while (tmp->next)
-		tmp = tmp->next;
+	while (tmp)
+	{
+		if (is_room_duplicates(tmp, new_room))
+			lem_error(ROOM_DUPL_ERR, stor);
+		if (tmp->next)
+			tmp = tmp->next;
+		else
+			break;
+	}
 	tmp->next = new_room;
 	return (room);
-
 }

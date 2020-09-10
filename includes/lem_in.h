@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 23:08:18 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 01:12:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@
 **	Error messages
 */
 
+# define NOT_ENOUGH_ERR	"ERROR"
 # define READ_ERR		"ERROR: Reading error occured"
-# define INP_ERR		"ERROR: incorrect input"
-# define NO_ANTS_ERR	"ERROR: No ants on input"
+# define INP_ERR		"ERROR: Incorrect input"
+# define ROOM_DUPL_ERR	"ERROR: Room name or coords duplicate"
+# define NO_ANTS_ERR	"ERROR: Incorrect number of ants on input"
 # define ROOM_ADD_ERR	"ERROR: Room creation failed"
 # define ALLOC_ERR		"ERROR: Allocation error"
 # define LINKS_ERR		"ERROR: Links creation failed"
-# define CMD_ERR_ST		"ERROR: More then one ##start cmd"
-# define CMD_ERR_END	"ERROR: More then one ##end cmd"
+# define CMD_ST_ERR		"ERROR: More then one ##start cmd"
+# define CMD_END_ERR	"ERROR: More then one ##end cmd"
 
 /*
 ** Other defines
@@ -110,7 +112,7 @@ int					is_room(char *line, t_frame *stor);
 int					is_hash(char *line, t_frame *stor);
 int					is_room_name(char *line);
 int					is_link(char *line, t_frame *stor);
-int					check_parsing(t_frame *stor);
+int					is_valid_map(t_frame *stor);
 
 void				handle_links(t_room *room, char *line, t_frame *stor);
 void				find_rooms(t_room *room, const char *r1, const char *r2, t_frame *stor);
