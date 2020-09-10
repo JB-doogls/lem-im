@@ -1,5 +1,6 @@
-./.vscode/
-./obj/
+lem_in_fallard/
+.vscode/
+obj/
 try.c
 lem-in
 *.out

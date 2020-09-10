@@ -9,6 +9,16 @@ r12 7 4
 r9-r12
 r9-r6
 
+
+## Fail - empty line
+
+123
+r0 2 4
+
+r1 6 4
+La 7 8
+
+
 ## Fail - 2 cmd ##start
 
 234

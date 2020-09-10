@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:56:53 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 21:55:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 */
 
 # define READ_ERR		"ERROR: Reading error occured"
+# define INP_ERR		"ERROR: incorrect input"
 # define NO_ANTS_ERR	"ERROR: No ants on input"
 # define ROOM_ADD_ERR	"ERROR: Room creation failed"
 # define ALLOC_ERR		"ERROR: Allocation error"
@@ -66,8 +67,7 @@ struct				s_link
 struct				s_room
 {
 	char			*name;
-	int				x;
-	int				y;
+	int				coord[2];
 	int				level;
 	int				num_links;
 	int				visit;
@@ -77,11 +77,13 @@ struct				s_room
 
 struct				s_frame
 {
-	char			*start;
-	char			*end;
+	t_room			*start;
+	t_room			*end;
 	int				cmd;
 	int				num_ants;
 	int				num_rooms;
+	t_input			*input;
+	t_room			*room;
 };
 
 
@@ -98,23 +100,23 @@ t_frame				*init_storage(t_input **input);
 void				parse_start_end(char *line, t_frame *stor);
 
 t_room				*create_room(t_frame *stor, char *line);
-t_room				*add_room(t_room *room, t_room *new_room);
+t_room				*add_room(t_room *room, t_room *new_room, t_frame *stor);
 
-int					is_valid_ants(char *str);
-int					is_room(char *line);
-int					is_hash(char *line);
+int					is_valid_ants(char *str, t_frame *stor);
+int					is_room(char *line, t_frame *stor);
+int					is_hash(char *line, t_frame *stor);
 int					is_room_name(char *line);
-int					is_link(char *line);
+int					is_link(char *line, t_frame *stor);
+int					check_parsing(t_frame *stor);
+
+void				handle_links(t_room *room, char *line, t_frame *stor);
+void				find_rooms(t_room *room, const char *r1, const char *r2, t_frame *stor);
+void				set_links(t_room *room1, t_room *room2, t_frame *stor);
+t_link				*create_link(t_room *room, t_frame *stor);
 
 
-void				handle_links(t_room *room, char *line);
-void				find_rooms(t_room *room, const char *r1, const char *r2);
-void				set_links(t_room *room1, t_room *room2);
-t_link				*create_link(t_room *room);
-
-
-void				lem_error(char *str);
-void				lem_free(t_input *input, t_frame *stor, t_room *room);
+void				lem_error(char *str, t_frame *stor);
+void				lem_free(t_frame *stor);
 void				free_input(t_input *input);
 void				free_stor(t_frame *stor);
 void				free_map(t_room *room);

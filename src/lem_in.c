@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:58:11 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 21:57:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@ void		lem_in()
 	t_frame		*stor;
 
 	if (!(input = read_input()))
-		lem_error(READ_ERR);
+	{
+		free_input(input);
+		lem_error(READ_ERR, NULL);
+	}
 	stor = init_storage(&input);
-	map = parse_input(input, stor);
-	lem_free(input, stor, map);
+	if (!(map = parse_input(input, stor)) || !check_parsing(stor))
+		lem_error(INP_ERR, stor);
+	// find_path()	- bfs
+	// pass_ants()
+	lem_free(stor);
 
 }
 

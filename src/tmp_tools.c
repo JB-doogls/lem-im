@@ -29,8 +29,8 @@ void		print_room(t_room *room)
 		return;
 	printf("\n---PRINT ROOM---\n");
 	printf("name = %s\n", room->name);
-	printf("x = %d\n", room->x);
-	printf("y = %d\n", room->y);
+	printf("x = %d\n", room->coord[0]);
+	printf("y = %d\n", room->coord[1]);
 	printf("level = %d\n", room->level);
 	printf("num_links = %d\n", room->num_links);
 	printf("visit = %d\n", room->visit);
@@ -65,7 +65,7 @@ void	print_room_list(t_frame *stor, t_room *room)
 	{
 		printf("\n---PRINT STOR---\n");
 		printf("\nnum_rooms = %d\n", stor->num_rooms);
-		printf("start = %s\n", stor->start ? stor->start : NULL);
-		printf("end = %s\n", stor->end ? stor->end : NULL);
+		printf("start = %s  num_links = %d\n", stor->start->name, stor->start->num_links);
+		printf("end = %s  num_links = %d\n", stor->end->name, stor->end->num_links);
 	}
 }

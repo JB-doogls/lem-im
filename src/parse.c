@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 19:00:00 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 21:17:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void		parse_start_end(char *line, t_frame *stor)
 {
 	if (!line)
-		lem_error(READ_ERR);
+		lem_error(READ_ERR, stor);
 	if (line && !ft_strcmp(line, "##start"))
 	{
 		if (stor->start)
-			lem_error(CMD_ERR_ST);
+			lem_error(CMD_ERR_ST, stor);
 		stor->cmd = START_SIG;
 	}
 	if (line && !ft_strcmp(line, "##end"))
 	{
 		if (stor->end)
-			lem_error(CMD_ERR_END);
+			lem_error(CMD_ERR_END, stor);
 		stor->cmd = END_SIG;
 	}
 }
@@ -36,13 +36,15 @@ t_frame		*init_storage(t_input **input)
 
 	if (!(stor = ft_memalloc(sizeof(t_frame))))
 		return (NULL);
-	while (*input && is_hash((*input)->line))
+	stor->input = (*input);
+	stor->room = NULL;
+	while (*input && is_hash((*input)->line, stor))
 		(*input) = (*input)->next;
 	if (*input && ft_isdigit((*input)->line[0]) &&
-		is_valid_ants((*input)->line))
+		is_valid_ants((*input)->line, stor))
 		stor->num_ants = ft_atoi((*input)->line);
 	else
-		lem_error(NO_ANTS_ERR);
+		lem_error(NO_ANTS_ERR, stor);
 	stor->num_rooms = 0;
 	stor->cmd = NO_SIG;
 	stor->end = NULL;
@@ -54,25 +56,24 @@ t_frame		*init_storage(t_input **input)
 
 t_room		*parse_input(t_input *input, t_frame *stor)
 {
-	t_room		*room;
-
 	if (!input)
-		lem_error(READ_ERR);
-	room = NULL;
+		lem_error(READ_ERR, stor);
 	while (input)
 	{
-		if (is_hash(input->line))
+		if (is_hash(input->line, stor))
 			parse_start_end(input->line, stor);
 		else
 		{
-			if (is_room(input->line))
-				room = add_room(room, create_room(stor, input->line));
-			if (is_link(input->line))
-				handle_links(room, input->line);
+			if (is_room(input->line, stor))
+				stor->room = add_room(stor->room, create_room(stor, input->line), stor);
+			else if (is_link(input->line, stor))
+				handle_links(stor->room, input->line, stor);
+			else
+				lem_error(INP_ERR, stor);
 		}
 		input = input->next;
 	}
 	// JUST FOR TESTING ***** DELETE
-	// print_room_list(stor, room ? room : NULL);
-	return (room);
+	print_room_list(stor, stor->room ? stor->room : NULL);
+	return (stor->room);
 }

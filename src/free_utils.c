@@ -6,14 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:57:05 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 21:40:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		lem_error(char *str)
+void		lem_error(char *str, t_frame *stor)
 {
+	lem_free(stor);
 	if (errno == 0)
 		perror(str);
 	else
@@ -23,21 +24,21 @@ void		lem_error(char *str)
 
 void		free_map(t_room *room)
 {
-	t_room		*tmproom;
-	t_link		*tmplink;
+	t_room		*tmp_room;
+	t_link		*tmp_link;
 
 	while (room)
 	{
 		free(room->name);
-		tmproom = room;
+		tmp_room = room;
 		while (room->link)
 		{
-			tmplink = room->link;
+			tmp_link = room->link;
 			room->link = room->link->next;
-			free(tmplink);
+			free(tmp_link);
 		}
 		room = room->next;
-		free(tmproom);
+		free(tmp_room);
 	}
 	ft_memdel((void*)room);
 }
@@ -46,7 +47,9 @@ void		free_stor(t_frame *stor)
 {
 	free(stor->start);
 	free(stor->end);
-	ft_memdel((void**)stor);
+	stor->input = NULL;
+	stor->room = NULL;
+	free(stor);
 }
 
 void		free_input(t_input *input)
@@ -63,12 +66,14 @@ void		free_input(t_input *input)
 	ft_memdel((void*)input);
 }
 
-void		lem_free(t_input *input, t_frame *stor, t_room *room)
+void		lem_free(t_frame *stor)
 {
-	if (input)
-		free_input(input);
 	if (stor)
+	{
+		if (stor->input)
+			free_input(stor->input);
+		if (stor->room)
+			free_map(stor->room);
 		free_stor(stor);
-	if (room)
-		free_map(room);
+	}
 }
