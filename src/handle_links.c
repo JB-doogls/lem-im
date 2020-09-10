@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 21:09:09 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 23:10:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 {
 	t_link		*link;
 
-	if (!(link = room1->link))
+	if (!(link = room1->links))
 	{
-		if (!(room1->link = create_link(room2, stor)))
+		if (!(room1->links = create_link(room2, stor)))
 			lem_error(LINKS_ERR, stor);
 		room1->num_links++;
 		return;

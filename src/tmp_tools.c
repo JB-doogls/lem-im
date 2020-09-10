@@ -34,15 +34,15 @@ void		print_room(t_room *room)
 	printf("level = %d\n", room->level);
 	printf("num_links = %d\n", room->num_links);
 	printf("visit = %d\n", room->visit);
-	printf("is_link = %s\n", room->link ? "YES" : "NO");
+	printf("is_link = %s\n", room->links ? "YES" : "NO");
 	
 	t_link	*lcopy;
-	if (room->link)
+	if (room->links)
 	{
-		lcopy = room->link;
+		lcopy = room->links;
 		while (lcopy)
 		{
-			printf("room->link->name = %s\n", lcopy->room->name);
+			printf("room->links->name = %s\n", lcopy->room->name);
 			lcopy = lcopy->next;
 		}
 	}

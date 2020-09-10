@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 22:20:47 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 23:09:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void		free_map(t_room *room)
 	{
 		free(room->name);
 		tmp_room = room;
-		while (room->link)
+		while (room->links)
 		{
-			tmp_link = room->link;
-			room->link = room->link->next;
+			tmp_link = room->links;
+			room->links = room->links->next;
 			free(tmp_link);
 		}
 		room = room->next;

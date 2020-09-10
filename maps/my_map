@@ -1,5 +1,6 @@
-## Success - basic map
+############### SUCCESS ###############
 
+## basic map
 123
 ##end
 r9 8 4
@@ -9,8 +10,30 @@ r12 7 4
 r9-r12
 r9-r6
 
+## mid map
+123
+r1 9 4
+r2 4 6
+r3 1 0
+##end
+r5 8 8
+r6 9 9
+##start
+r9 10 11
+r7 10 4
+r8 11 4
+r9-r1
+r1-r7
+r7-r5
+r3-r1
+r2-r3
+r3-r5
 
-## Fail - empty line
+
+
+############### FAIL ###############
+
+## empty line
 
 123
 r0 2 4
@@ -19,7 +42,7 @@ r1 6 4
 La 7 8
 
 
-## Fail - 2 cmd ##start
+## 2 cmd ##start
 
 234
 ##start
@@ -31,7 +54,7 @@ r9 5 4
 r2 3 1
 
 
-## Fail - 2 cmd ##end
+## 2 cmd ##end
 
 234
 ##start

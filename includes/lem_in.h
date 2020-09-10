@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 22:22:17 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 23:08:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ struct				s_room
 	int				coord[2];
 	int				level;
 	int				num_links;
+	int				output_links;
+	int				input_links;
 	int				visit;
 	t_room			*next;
-	t_link			*link;
+	t_link			*links;
 };
 
 struct				s_frame

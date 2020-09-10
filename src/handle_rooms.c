@@ -6,29 +6,42 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 21:39:04 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 23:08:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		get_start_end_room(t_frame *stor, t_room *room)
+static void		get_start_end_room(t_frame *stor, t_room *room)
 {
 	if (stor->cmd == START_SIG)
 	{
-		stor->start = room; //ft_strdup(room->name);
+		stor->start = room;
 		room->level = 0;
 		stor->cmd = NO_SIG;
 	}
 	if (stor->cmd == END_SIG)
 	{
-		stor->end = room; //ft_strdup(room->name);
+		stor->end = room;
 		room->level = INT_MAX;
 		stor->cmd = NO_SIG;
 	}
 }
 
-t_room		*create_room(t_frame *stor, char *line)
+static void 	set_room_params(t_room *room, char **split)
+{
+	room->coord[0] = ft_atoi(split[1]);
+	room->coord[1] = ft_atoi(split[2]);
+	room->level = -1;
+	room->num_links = 0;
+	room->output_links = 0;
+	room->input_links = 0;
+	room->visit = 0;
+	room->next = NULL;
+	room->links = NULL;
+}
+
+t_room			*create_room(t_frame *stor, char *line)
 {
 	t_room	*room;
 	char	**split;
@@ -41,13 +54,7 @@ t_room		*create_room(t_frame *stor, char *line)
 		ft_free_splited(split);
 		lem_error(ROOM_ADD_ERR, stor);
 	}
-	room->coord[0] = ft_atoi(split[1]);
-	room->coord[1] = ft_atoi(split[2]);
-	room->level = -1;
-	room->num_links = 0;
-	room->visit = 0;
-	room->next = NULL;
-	room->link = NULL;
+	set_room_params(room, split);
 	get_start_end_room(stor, room);
 	ft_free_splited(split);
 	stor->num_rooms++;
@@ -60,7 +67,7 @@ t_room		*create_room(t_frame *stor, char *line)
 **	и добавляем в конец списка new_room
 */
 
-t_room		*add_room(t_room *room, t_room *new_room, t_frame *stor)
+t_room			*add_room(t_room *room, t_room *new_room, t_frame *stor)
 {
 	t_room	*tmp;
 
