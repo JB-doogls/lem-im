@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 01:03:23 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 01:28:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ t_frame		*init_storage(t_input **input)
 	stor->map_copy = NULL;
 	while (*input && is_hash((*input)->line, stor))
 		(*input) = (*input)->next;
-	if (*input && ft_isdigit((*input)->line[0]) &&
-		is_valid_ants((*input)->line, stor))
+	if (*input &&
+	(ft_isdigit((*input)->line[0]) || (*input)->line[0] == '-') &&
+	is_valid_ants((*input)->line, stor))
 		stor->num_ants = ft_atoi((*input)->line);
 	else
-		lem_error(NO_ANTS_ERR, stor);
+		lem_error(NOT_ENOUGH_ERR, stor);
 	stor->num_rooms = 0;
 	stor->cmd = NO_SIG;
 	stor->end = NULL;
 	stor->start = NULL;
 	(*input) = (*input)->next;
 	return (stor);
-	
 }
 
 t_room		*parse_input(t_input *input, t_frame *stor)

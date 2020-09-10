@@ -62,6 +62,16 @@ r12 7 4
 r9-r12
 r9-r6
 
+## num of ants is negative
+-100
+##end
+r9 8 4
+##start
+r6 4 2
+r12 7 4
+r9-r12
+r9-r6
+
 ## num of ants equal '0'
 0
 ##end

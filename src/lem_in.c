@@ -6,11 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 01:12:23 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 01:28:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+**	TODO:	handle duplicate links
+*/
 
 
 t_frame		*create_map()
