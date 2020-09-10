@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 22:18:08 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 23:25:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 		input = input->next;
 	}
 	// JUST FOR TESTING ***** DELETE
-	print_room_list(stor, stor->map ? stor->map : NULL);
+	// print_room_list(stor, stor->map ? stor->map : NULL);
 	return (stor->map);
 }
