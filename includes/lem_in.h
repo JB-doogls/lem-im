@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 21:55:06 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 22:22:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ struct				s_frame
 	int				num_ants;
 	int				num_rooms;
 	t_input			*input;
-	t_room			*room;
+	t_room			*map;
+	t_room			*map_copy;	// static pointer to use in case of EXIT and clear all data
 };
 
 
@@ -91,7 +92,7 @@ struct				s_frame
 **	Functions
 */
 
-void				lem_in();
+t_frame				*create_map();
 t_input				*read_input();
 t_input				*create_input_item(char *line);
 

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 21:40:16 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 22:20:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void		free_stor(t_frame *stor)
 	free(stor->start);
 	free(stor->end);
 	stor->input = NULL;
-	stor->room = NULL;
+	stor->map = NULL;
+	stor->map_copy = NULL;
 	free(stor);
 }
 
@@ -72,8 +73,8 @@ void		lem_free(t_frame *stor)
 	{
 		if (stor->input)
 			free_input(stor->input);
-		if (stor->room)
-			free_map(stor->room);
+		if (stor->map)
+			free_map(stor->map_copy);
 		free_stor(stor);
 	}
 }

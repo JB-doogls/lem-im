@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 21:58:08 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 22:17:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			check_parsing(t_frame *stor)
 	if (!stor)
 		return (0);
 	if (!stor->start || !stor->end || stor->start->num_links == 0 ||
-	stor->end->num_links == 0 || !stor->room || stor->num_rooms == 2)
+	stor->end->num_links == 0 || !stor->map || stor->num_rooms == 2)
 		return (0);
 	return (1);
 }

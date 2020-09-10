@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 21:17:41 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 22:18:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ t_frame		*init_storage(t_input **input)
 	if (!(stor = ft_memalloc(sizeof(t_frame))))
 		return (NULL);
 	stor->input = (*input);
-	stor->room = NULL;
+	stor->map = NULL;
+	stor->map_copy = NULL;
 	while (*input && is_hash((*input)->line, stor))
 		(*input) = (*input)->next;
 	if (*input && ft_isdigit((*input)->line[0]) &&
@@ -65,15 +66,15 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 		else
 		{
 			if (is_room(input->line, stor))
-				stor->room = add_room(stor->room, create_room(stor, input->line), stor);
+				stor->map = add_room(stor->map, create_room(stor, input->line), stor);
 			else if (is_link(input->line, stor))
-				handle_links(stor->room, input->line, stor);
+				handle_links(stor->map, input->line, stor);
 			else
 				lem_error(INP_ERR, stor);
 		}
 		input = input->next;
 	}
 	// JUST FOR TESTING ***** DELETE
-	print_room_list(stor, stor->room ? stor->room : NULL);
-	return (stor->room);
+	print_room_list(stor, stor->map ? stor->map : NULL);
+	return (stor->map);
 }
