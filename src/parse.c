@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 01:28:52 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 01:46:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 			else if (is_link(input->line, stor))
 				handle_links(stor->map, input->line, stor);
 			else
-				lem_error(INP_ERR, stor);
+				lem_error(INPUT_ERR, stor);
 		}
 		input = input->next;
 	}

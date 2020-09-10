@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 01:42:47 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 01:46:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define NOT_ENOUGH_ERR	"ERROR"
 # define READ_ERR		"ERROR: Reading error occured"
-# define INP_ERR		"ERROR: Incorrect input"
+# define INPUT_ERR		"ERROR: Incorrect input"
 # define ROOM_DUPL_ERR	"ERROR: Room name or coords duplicate"
 # define NO_ANTS_ERR	"ERROR: Incorrect number of ants on input"
 # define ROOM_ADD_ERR	"ERROR: Room creation failed"
