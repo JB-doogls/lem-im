@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 01:34:47 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 18:22:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@
 # define READ_ERR		"ERROR: Reading error occured"
 # define NO_ANTS_ERR	"ERROR: No ants on input"
 # define ROOM_ADD_ERR	"ERROR: Room creation failed"
-# define ALLOC_ERR		"ERROR: allocation error"
-# define LINKS_ERR		"ERROR: links creation failed"
+# define ALLOC_ERR		"ERROR: Allocation error"
+# define LINKS_ERR		"ERROR: Links creation failed"
+# define CMD_ERR_ST		"ERROR: More then one ##start cmd"
+# define CMD_ERR_END	"ERROR: More then one ##end cmd"
 
 /*
 ** Other defines
@@ -109,7 +111,9 @@ void				handle_links(t_room *room, char *line);
 
 
 void				lem_error(char *str);
-
+void				free_input(t_input *input);
+void				free_stor(t_frame **stor);
+void				free_map(t_room *room);
 
 /*
 **	JUST FOR TESTING ********************** DELETE

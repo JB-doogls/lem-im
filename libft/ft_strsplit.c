@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 16:38:28 by edoll             #+#    #+#             */
-/*   Updated: 2020/08/28 00:50:22 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 18:19:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char		*get_word(const char *s, char c)
 
 	i = 0;
 	ln = 0;
-	while (&s[ln] && s[ln] != c)
+	while (s[ln] && s[ln] != c)
 		ln++;
 	if (!(word = (char*)malloc(sizeof(char) * (ln + 1))))
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 02:33:05 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 18:21:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@ void		parse_start_end(char *line, t_frame *stor)
 	if (!line)
 		lem_error(READ_ERR);
 	if (line && !ft_strcmp(line, "##start"))
-			stor->cmd = START_SIG;
+	{
+		if (stor->start)
+			lem_error(CMD_ERR_ST);
+		stor->cmd = START_SIG;
+	}
 	if (line && !ft_strcmp(line, "##end"))
-			stor->cmd = END_SIG;
+	{
+		if (stor->end)
+			lem_error(CMD_ERR_END);
+		stor->cmd = END_SIG;
+	}
 }
 
 t_frame		*init_storage(t_input **input)
@@ -57,9 +65,8 @@ t_room		*parse_input(t_input *input)
 	{
 		if (is_hash(input->line))
 			parse_start_end(input->line, stor);
-		if (!is_hash(input->line))
+		else
 		{
-			printf("current line = %s\n", input ? input->line : NULL);
 			if (is_room(input->line))
 				room = add_room(room, create_room(stor, input->line));
 			if (is_link(input->line))
@@ -68,5 +75,6 @@ t_room		*parse_input(t_input *input)
 		input = input->next;
 	}
 	print_room_list(stor, room ? room : NULL);			// func to print rooms list (testing)
+	free_stor(&stor);
 	return (room);
 }

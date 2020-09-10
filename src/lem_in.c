@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 01:43:22 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 14:40:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void		lem_in()
 		lem_error(READ_ERR);
 	map = parse_input(input);
 	
+	free_input(input);
+	free_map(map);
 	// print_input(input);
 
 }

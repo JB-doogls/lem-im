@@ -1,3 +1,5 @@
+## Success - basic map
+
 123
 ##end
 r9 8 4
@@ -6,3 +8,26 @@ r6 4 2
 r12 7 4
 r9-r12
 r9-r6
+
+## Fail - 2 cmd ##start
+
+234
+##start
+r1 9 4
+r6 4 1
+##end
+r9 5 4
+##start
+r2 3 1
+
+
+## Fail - 2 cmd ##end
+
+234
+##start
+r1 9 4
+r6 4 1
+##end
+r9 5 4
+##end
+r2 3 1

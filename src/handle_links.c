@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 01:42:43 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 18:10:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void		handle_links(t_room *room, char *line)
 	if (!(room1 = split[0]) || !(room2 = split[1]))
 		return;
 	find_rooms(room, room1, room2);
+	ft_free_splited(split);
 }

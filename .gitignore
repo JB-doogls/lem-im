@@ -1,0 +1,8 @@
+./.vscode/
+./obj/
+try.c
+lem-in
+*.out
+*.o
+*.a
+*.so
