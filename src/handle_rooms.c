@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:10:03 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 19:01:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,6 @@ void		get_start_end_room(t_frame *stor, t_room *room)
 		room->level = INT_MAX;
 		stor->cmd = NO_SIG;
 	}
-}
-
-
-// Держим указатель на head всегда возвращая room.
-// Прокручиваемся от него в конец через копию
-// и добавляем в конец списка new_room
-
-t_room		*add_room(t_room *room, t_room *new_room)
-{
-	t_room	*tmp;
-
-	if (!new_room)
-		lem_error(ROOM_ADD_ERR);
-	if (!room)
-		return (new_room);
-	tmp = room;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new_room;
-	return (room);
-
 }
 
 t_room		*create_room(t_frame *stor, char *line)
@@ -70,4 +49,26 @@ t_room		*create_room(t_frame *stor, char *line)
 	ft_free_splited(split);
 	stor->num_rooms++;
 	return (room);
+}
+
+/*
+**	Держим указатель на head всегда возвращая room.
+**	Прокручиваемся от него в конец через копию
+**	и добавляем в конец списка new_room
+*/
+
+t_room		*add_room(t_room *room, t_room *new_room)
+{
+	t_room	*tmp;
+
+	if (!new_room)
+		lem_error(ROOM_ADD_ERR);
+	if (!room)
+		return (new_room);
+	tmp = room;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_room;
+	return (room);
+
 }

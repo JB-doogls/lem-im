@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:21:27 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 19:00:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,18 @@ t_frame		*init_storage(t_input **input)
 	stor->cmd = NO_SIG;
 	stor->end = NULL;
 	stor->start = NULL;
+	(*input) = (*input)->next;
 	return (stor);
 	
 }
 
-t_room		*parse_input(t_input *input)
+t_room		*parse_input(t_input *input, t_frame *stor)
 {
 	t_room		*room;
-	t_frame		*stor;
 
 	if (!input)
 		lem_error(READ_ERR);
 	room = NULL;
-	stor = init_storage(&input);
-	input = input->next;
 	while (input)
 	{
 		if (is_hash(input->line))
@@ -74,7 +72,7 @@ t_room		*parse_input(t_input *input)
 		}
 		input = input->next;
 	}
-	print_room_list(stor, room ? room : NULL);			// func to print rooms list (testing)
-	free_stor(&stor);
+	// JUST FOR TESTING ***** DELETE
+	// print_room_list(stor, room ? room : NULL);
 	return (room);
 }

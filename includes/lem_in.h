@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:22:40 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 18:56:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,12 @@ struct				s_frame
 **	Functions
 */
 
-
+void				lem_in();
 t_input				*read_input();
 t_input				*create_input_item(char *line);
 
-t_room				*parse_input(t_input *input);
+t_room				*parse_input(t_input *input, t_frame *stor);
+t_frame				*init_storage(t_input **input);
 void				parse_start_end(char *line, t_frame *stor);
 
 t_room				*create_room(t_frame *stor, char *line);
@@ -103,16 +104,19 @@ int					is_valid_ants(char *str);
 int					is_room(char *line);
 int					is_hash(char *line);
 int					is_room_name(char *line);
-int					is_hash(char *line);
 int					is_link(char *line);
 
 
 void				handle_links(t_room *room, char *line);
+void				find_rooms(t_room *room, const char *r1, const char *r2);
+void				set_links(t_room *room1, t_room *room2);
+t_link				*create_link(t_room *room);
 
 
 void				lem_error(char *str);
+void				lem_free(t_input *input, t_frame *stor, t_room *room);
 void				free_input(t_input *input);
-void				free_stor(t_frame **stor);
+void				free_stor(t_frame *stor);
 void				free_map(t_room *room);
 
 /*

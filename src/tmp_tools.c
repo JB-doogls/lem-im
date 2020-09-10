@@ -69,8 +69,3 @@ void	print_room_list(t_frame *stor, t_room *room)
 		printf("end = %s\n", stor->end ? stor->end : NULL);
 	}
 }
-
-
-/*
-**********************************************
-*/

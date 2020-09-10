@@ -6,57 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:10:55 by user             ###   ########.fr       */
+/*   Updated: 2020/09/10 18:58:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		free_map(t_room *room)
-{
-	t_room		*tmproom;
-	t_link		*tmplink;
-
-	while (room)
-	{
-		free(room->name);
-		tmproom = room;
-		while (room->link)
-		{
-			tmplink = room->link;
-			// free(room->link->room);
-			room->link = room->link->next;
-			free(tmplink);
-		}
-		room = room->next;
-		free(tmproom);
-	}
-	ft_memdel((void*)room);
-}
-
-void		free_stor(t_frame **stor)
-{
-	free((*stor)->start);
-	free((*stor)->end);
-	ft_memdel((void**)stor);
-}
-
-void		free_input(t_input *input)
-{
-	t_input		*tmp;
-
-	while (input)
-	{
-		free(input->line);
-		tmp = input;
-		input = input->next;
-		free(tmp);
-	}
-	ft_memdel((void*)input);
-}
-
 /*
-**	Check input funcs: is_cmd, is_room, is_comment, is_link
+**	Check input funcs
 */
 
 int			is_valid_ants(char *str)
@@ -115,18 +72,4 @@ int			is_room(char *line)
 		res = 0;
 	ft_free_splited(split);
 	return (res);
-}
-
-/*
-**	Other funcsroom
-*/
-
-
-void		lem_error(char *str)
-{
-	if (errno == 0)
-		perror(str);
-	else
-		ft_putendl_fd(str, 2);
-	exit(EXIT_FAILURE);
 }
