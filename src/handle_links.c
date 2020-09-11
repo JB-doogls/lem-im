@@ -6,11 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:45:57 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:54:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "struct.h"
+#include "lem_parser.h"
 
 t_link		*create_link(t_room *room, t_frame *stor)
 {

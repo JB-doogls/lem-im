@@ -6,11 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:44:00 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:54:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "struct.h"
+#include "lem_parser.h"
 
 static int		is_room_duplicates(t_room *room, t_room *new_room)
 {

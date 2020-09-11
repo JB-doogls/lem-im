@@ -6,11 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:38:39 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 19:28:29 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:54:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "struct.h"
+#include "lem_parser.h"
 
 void		set_levels(t_frame *stor)	// tmp funcs to set bfs levels	**** DELETE
 {

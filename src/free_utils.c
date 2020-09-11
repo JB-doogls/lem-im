@@ -6,11 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 01:12:28 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:54:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "struct.h"
+#include "lem_parser.h"
 
 void		lem_error(char *str, t_frame *stor)
 {

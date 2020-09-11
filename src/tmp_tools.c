@@ -1,5 +1,6 @@
 
-#include "lem_in.h"
+#include "struct.h"
+#include "lem_parser.h"
 
 /*
 **		JUST FOR TESTING**********************

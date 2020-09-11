@@ -6,13 +6,13 @@
 #    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/09/11 18:38:58 by user             ###   ########.fr        #
+#    Updated: 2020/09/11 20:53:15 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----- Name -----
 NAME 		= lem-in
-HEADER_NAME	= lem_in.h
+HEADER_NAME	= lem_parser.h struct.h
 LIBFT_NAME	= libft.a
 
 # ----- Dir -----
