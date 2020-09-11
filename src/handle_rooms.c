@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 00:40:44 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:44:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_room			*create_room(t_frame *stor, char *line)
 	t_room	*room;
 	char	**split;
 
-	if (!line || !(room = ft_memalloc(sizeof(t_room))))
+	if (!line || !(room = ft_calloc(1, sizeof(t_room))))
 		lem_error(ROOM_ADD_ERR, stor);
 	if (!(split = ft_strsplit(line, ' ')) ||
 	!(room->name = ft_strdup(split[0])))

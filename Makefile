@@ -6,7 +6,7 @@
 #    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 11:33:25 by user              #+#    #+#              #
-#    Updated: 2020/09/10 18:54:38 by user             ###   ########.fr        #
+#    Updated: 2020/09/11 18:38:58 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ INC_DIR 	= ./includes/
 # ----- Lists -----
 FUNCS		= lem_in.c read_input.c parse.c utils.c free_utils.c \
 				handle_rooms.c handle_links.c \
+				create_path.c \
 				\
 				tmp_tools.c
 

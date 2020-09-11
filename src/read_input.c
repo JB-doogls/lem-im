@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:54:18 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 18:54:59 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:44:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_input		*create_input_item(char *line)
 {
 	t_input		*item;
 
-	if (!line || !(item = ft_memalloc(sizeof(t_input))))
+	if (!line || !(item = ft_calloc(1, sizeof(t_input))))
 		return (NULL);
 	item->line = line;
 	item->next = NULL;

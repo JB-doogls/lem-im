@@ -6,14 +6,17 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 17:27:39 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:44:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-**	TODO:	
+**	TODO:	1. Прочекать какие специфические библиотечные функции использую. Составить список.
+**			2. Разделить хедеры
+**			3. Добавить флаг is_link в парсер
+**			4. Добавить печать и очистку input в конец create_map()
 */
 
 
@@ -32,19 +35,24 @@ t_frame		*create_map()
 	if (!(map = parse_input(input, stor)) || !is_valid_map(stor))
 		lem_error(NOT_ENOUGH_ERR, stor);
 	// lem_free(stor);
+	// print_input();
 	return (stor);
 }
 
 int			main(int ac, char **av)
 {
 	t_frame		*stor;
+	t_path		*path;
 
 	errno = 0;
 	// if (ac >= 2) 	// Here is to handle possible bonus-flags
 	// {				// --help, --verbose, --debug, etc
 	// }
 	if (ac == 1)
+	{
 		stor = create_map();
+		// path = create_path(stor);
+	}
 	// else
 	// 	lem_error(SMTH_HERE)
 	

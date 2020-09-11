@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 17:27:22 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:43:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_frame		*init_storage(t_input **input)
 {
 	t_frame		*stor;
 
-	if (!(stor = ft_memalloc(sizeof(t_frame))))
+	if (!(stor = ft_calloc(1, sizeof(t_frame))))
 		return (NULL);
 	stor->input = (*input);
 	stor->map = NULL;
@@ -54,6 +54,9 @@ t_frame		*init_storage(t_input **input)
 	(*input) = (*input)->next;
 	return (stor);
 }
+
+// добавить флаг is_link - когда начинается чтение комнат. Передаем его в проверку на комнаты - если флаг 1,
+// значит, после ссылок пришла комната - это невалид. Lem_error()
 
 t_room		*parse_input(t_input *input, t_frame *stor)
 {
@@ -76,6 +79,6 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 	}
 	stor->map_copy = stor->map;
 	// JUST FOR TESTING ***** DELETE
-	// print_room_list(stor, stor->map ? stor->map : NULL);
+	print_room_list(stor, stor->map ? stor->map : NULL);
 	return (stor->map);
 }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 17:29:05 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 20:45:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_link		*create_link(t_room *room, t_frame *stor)
 {
 	t_link	*link;
 
-	if (!(link = ft_memalloc(sizeof(t_room))))
+	if (!(link = ft_calloc(1, sizeof(t_room))))
 		lem_error(LINKS_ERR, stor);
 	link->room = room;
 	link->next = NULL;

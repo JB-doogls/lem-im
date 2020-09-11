@@ -12,6 +12,7 @@
 
 
 FUNCTIONS = ft_memset \
+			ft_calloc \
 			ft_bzero \
 			ft_memcpy \
 			ft_memccpy \

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 17:22:07 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 18:47:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_link		t_link;
 typedef struct s_room		t_room;
 typedef struct s_frame		t_frame;
 typedef struct s_input		t_input;
+typedef struct s_path		t_path;
 
 struct				s_input
 {
@@ -80,6 +81,13 @@ struct				s_room
 	t_link			*links;
 };
 
+struct				s_path
+{
+	t_room			*start;
+	t_path			*next;
+	int				len;
+};
+
 struct				s_frame
 {
 	t_room			*start;
@@ -94,7 +102,7 @@ struct				s_frame
 
 
 /*
-**	Functions
+**	Functions to parse input and create map
 */
 
 t_frame				*create_map();
@@ -126,6 +134,14 @@ void				lem_free(t_frame *stor);
 void				free_input(t_input *input);
 void				free_stor(t_frame *stor);
 void				free_map(t_room *room);
+
+
+/*
+**	Functions to handle paths
+*/
+
+t_path				*create_path(t_frame *stor);
+
 
 /*
 **	JUST FOR TESTING ********************** DELETE
