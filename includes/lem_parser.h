@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:52:50 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 21:56:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define START_SIG	1
 # define END_SIG	2
 # define NO_SIG		0
-
 
 /*
 **	Functions to parse input and create map
@@ -49,18 +48,17 @@ int			is_room_name(char *line);
 int			is_link(char *line, t_frame *stor);
 int			is_valid_map(t_frame *stor);
 
-void		handle_links(t_room *room, char *line, t_frame *stor);
+int			handle_links(t_room *room, char *line, t_frame *stor);
 void		find_rooms(t_room *room, const char *r1, const char *r2, t_frame *stor);
 void		set_links(t_room *room1, t_room *room2, t_frame *stor);
 t_link		*create_link(t_room *room, t_frame *stor);
-
 
 void		lem_error(char *str, t_frame *stor);
 void		lem_free(t_frame *stor);
 void		free_input(t_input *input);
 void		free_stor(t_frame *stor);
 void		free_map(t_room *room);
-
+void		input_print_and_free(t_frame *stor);
 
 /*
 **	Functions to handle paths

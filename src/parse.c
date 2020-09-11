@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:55:04 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 22:04:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ t_frame		*init_storage(t_input **input)
 	return (stor);
 }
 
-// добавить флаг is_link - когда начинается чтение комнат. Передаем его в проверку на комнаты - если флаг 1,
-// значит, после ссылок пришла комната - это невалид. Lem_error()
-
 t_room		*parse_input(t_input *input, t_frame *stor)
 {
+	int		link_flag;
+
+	link_flag = 0;
 	if (!input)
 		return (NULL);
 	while (input)
@@ -70,16 +70,34 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 		else
 		{
 			if (is_room(input->line, stor))
-				stor->map = add_room(stor->map, create_room(stor, input->line), stor);
+				link_flag ? lem_error(INPUT_ERR, stor) :
+				(stor->map = add_room(stor->map, create_room(stor, input->line), stor));
 			else if (is_link(input->line, stor))
-				handle_links(stor->map, input->line, stor);
+				link_flag = handle_links(stor->map, input->line, stor);
 			else
 				lem_error(INPUT_ERR, stor);
 		}
 		input = input->next;
 	}
-	stor->map_copy = stor->map;
 	// JUST FOR TESTING ***** DELETE
-	print_room_list(stor, stor->map ? stor->map : NULL);
-	return (stor->map);
+	// print_room_list(stor, stor->map ? stor->map : NULL);
+	return (stor->map_copy = stor->map);
+}
+
+t_frame		*create_map()
+{
+	t_room		*map;
+	t_input		*input;
+	t_frame		*stor;
+
+	if (!(input = read_input()))
+	{
+		free_input(input);
+		lem_error(READ_ERR, NULL);
+	}
+	stor = init_storage(&input);
+	if (!(map = parse_input(input, stor)) || !is_valid_map(stor))
+		lem_error(NOT_ENOUGH_ERR, stor);
+	// input_print_and_free(stor);		// для печати и удаления прочтенного ввода.
+	return (stor);
 }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:54:19 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 22:04:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,8 @@
 #include "lem_parser.h"
 
 /*
-**	TODO:	1. Прочекать какие специфические библиотечные функции использую. Составить список.
-**			2. Разделить хедеры
-**			3. Добавить флаг is_link в парсер
-**			4. Добавить печать и очистку input в конец create_map()
+**	TODO:
 */
-
-
-t_frame		*create_map()
-{
-	t_room		*map;
-	t_input		*input;
-	t_frame		*stor;
-
-	if (!(input = read_input()))
-	{
-		free_input(input);
-		lem_error(READ_ERR, NULL);
-	}
-	stor = init_storage(&input);
-	if (!(map = parse_input(input, stor)) || !is_valid_map(stor))
-		lem_error(NOT_ENOUGH_ERR, stor);
-	// lem_free(stor);
-	// print_input();
-	return (stor);
-}
 
 int			main(int ac, char **av)
 {
@@ -56,6 +33,7 @@ int			main(int ac, char **av)
 	}
 	// else
 	// 	lem_error(SMTH_HERE)
-	
+
+	lem_free(stor);	
 	return(0);
 }
