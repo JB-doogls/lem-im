@@ -6,13 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/10 23:10:23 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 17:29:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_link	*create_link(t_room *room, t_frame *stor)
+t_link		*create_link(t_room *room, t_frame *stor)
 {
 	t_link	*link;
 
@@ -35,12 +35,15 @@ void		set_links(t_room *room1, t_room *room2, t_frame *stor)
 		room1->num_links++;
 		return;
 	}
-	while (link->next)
+	while (link)
 	{
 		if (!ft_strcmp(link->room->name, room1->name) ||
 		!ft_strcmp(link->room->name, room2->name))
-			return;
-		link = link->next;
+			lem_error(LINKS_DUPL_ERR, stor);
+		if (link->next)
+			link = link->next;
+		else
+			break;
 	}
 	room1->num_links++;
 	if (!(link->next = create_link(room2, stor)))
@@ -69,7 +72,6 @@ void		find_rooms(t_room *room, const char *r1, const char *r2, t_frame *stor)
 		lem_error(LINKS_ERR, stor);
 	set_links(room1, room2, stor);
 	set_links(room2, room1, stor);
-	
 }
 
 void		handle_links(t_room *room, char *line, t_frame *stor)

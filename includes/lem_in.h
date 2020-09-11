@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 01:46:49 by user             ###   ########.fr       */
+/*   Updated: 2020/09/11 17:22:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define ROOM_ADD_ERR	"ERROR: Room creation failed"
 # define ALLOC_ERR		"ERROR: Allocation error"
 # define LINKS_ERR		"ERROR: Links creation failed"
+# define LINKS_DUPL_ERR "ERROR: Duplicate links"
 # define CMD_ST_ERR		"ERROR: More than one ##start cmd"
 # define CMD_END_ERR	"ERROR: More than one ##end cmd"
 
