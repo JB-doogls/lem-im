@@ -1,3 +1,18 @@
+## 10 ants | 1 path
+
+## path: start-r1-r6-r4-end
+10
+##end
+end 1 0
+r1 2 4
+r4 8 1
+r6 11 99
+##start
+start 10 11
+start-r1
+r1-r6
+r6-r4
+r4-end
 
 ## 20 ants | 3 paths
 
@@ -34,3 +49,4 @@ start-r9
 r9-r10
 r10-end
 
+r1 r2 r9

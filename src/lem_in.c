@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 22:44:30 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 22:04:30 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 01:05:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int			main(int ac, char **av)
 	if (ac == 1)
 	{
 		stor = create_map();
-		// path = create_path(stor);
+		path = create_paths(stor);
 	}
 	// else
 	// 	lem_error(SMTH_HERE)
 
-	lem_free(stor);	
+	// lem_free(stor);	
 	return(0);
 }

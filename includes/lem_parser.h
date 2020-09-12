@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 21:56:49 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 00:57:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,14 @@ void		lem_free(t_frame *stor);
 void		free_input(t_input *input);
 void		free_stor(t_frame *stor);
 void		free_map(t_room *room);
+void		free_paths(t_path *paths);
 void		input_print_and_free(t_frame *stor);
 
 /*
 **	Functions to handle paths
 */
 
-t_path		*create_path(t_frame *stor);
+t_path		*create_paths(t_frame *stor);
 
 
 /*
@@ -74,5 +75,8 @@ t_path		*create_path(t_frame *stor);
 void		print_input(t_input *input);
 void		print_room(t_room *room);
 void		print_room_list(t_frame *stor, t_room *room);
+void		print_path(t_path *path, int ct);
+void		print_path_list(t_frame *stor);
+void		set_levels(t_frame *stor);			// emulate bfs levels
 
 #endif

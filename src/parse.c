@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 22:04:34 by user             ###   ########.fr       */
+/*   Updated: 2020/09/12 21:05:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ void		parse_start_end(char *line, t_frame *stor)
 	}
 }
 
+static void	set_stor_params(t_frame *stor)
+{
+	stor->map = NULL;
+	stor->map_copy = NULL;
+	stor->num_rooms = 0;
+	stor->cmd = NO_SIG;
+	stor->end = NULL;
+	stor->start = NULL;
+	stor->paths = NULL;
+}
+
 t_frame		*init_storage(t_input **input)
 {
 	t_frame		*stor;
@@ -38,8 +49,7 @@ t_frame		*init_storage(t_input **input)
 	if (!(stor = ft_calloc(1, sizeof(t_frame))))
 		return (NULL);
 	stor->input = (*input);
-	stor->map = NULL;
-	stor->map_copy = NULL;
+	set_stor_params(stor);
 	while (*input && is_hash((*input)->line, stor))
 		(*input) = (*input)->next;
 	if (*input &&
@@ -48,10 +58,6 @@ t_frame		*init_storage(t_input **input)
 		stor->num_ants = ft_atoi((*input)->line);
 	else
 		lem_error(NOT_ENOUGH_ERR, stor);
-	stor->num_rooms = 0;
-	stor->cmd = NO_SIG;
-	stor->end = NULL;
-	stor->start = NULL;
 	(*input) = (*input)->next;
 	return (stor);
 }

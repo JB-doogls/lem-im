@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:53:46 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 00:47:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define LINKS_DUPL_ERR "ERROR: Duplicate links"
 # define CMD_ST_ERR		"ERROR: More than one ##start cmd"
 # define CMD_END_ERR	"ERROR: More than one ##end cmd"
+# define MEM_FREE_ERR	"ERROR: No memory to free on passed pointer"
+
+# define PATH_ERR		"ERROR: Path creation error"
 
 /*
 **	Structures
@@ -66,7 +69,7 @@ struct				s_room
 
 struct				s_path
 {
-	t_room			*start;
+	t_link			*start;
 	t_path			*next;
 	int				len;
 };
@@ -81,6 +84,7 @@ struct				s_frame
 	t_input			*input;
 	t_room			*map;
 	t_room			*map_copy;	// static pointer to use in case of EXIT and clear all data
+	t_path			*paths;
 };
 
 #endif
