@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 00:47:40 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 02:34:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ struct				s_room
 {
 	char			*name;
 	int				coord[2];
+	int				ants;
 	int				level;
 	int				num_links;
 	int				output_links;
@@ -72,6 +73,7 @@ struct				s_path
 	t_link			*start;
 	t_path			*next;
 	int				len;
+	int				ants_togo;
 };
 
 struct				s_frame

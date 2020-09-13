@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 01:10:24 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 02:34:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_path		*create_paths(t_frame *stor);
 void		construct_path(t_path *path, t_link *lev1, t_frame *stor);
 void		add_path(t_path *path, t_frame *stor);
 t_path		*create_path_node(t_frame *stor);
+
+void		handle_ants_move(t_frame *stor);
 
 
 /*

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:38:39 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 01:10:43 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 03:08:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_path		*create_path_node(t_frame *stor)
 	path->start = create_link(stor->start, stor);
 	path->next = NULL;
 	path->len = 0;
+	path->ants_togo = 0;
 	return (path);
 }
 
@@ -51,6 +52,10 @@ void		add_path(t_path *path, t_frame *stor)
 		stor->paths = path;
 }
 
+/*
+**	Path->len var include only 'mid' level-rooms and exclude start & end rooms
+*/
+
 void		construct_path(t_path *path, t_link *lev1, t_frame *stor)
 {
 	t_link		*deep_link;
@@ -58,7 +63,6 @@ void		construct_path(t_path *path, t_link *lev1, t_frame *stor)
 
 	path_link = path->start;
 	path_link->next = create_link(lev1->room, stor);
-	path->len++;
 	path_link = path_link->next;
 	deep_link = path_link->room->links->next;
 	while (deep_link && deep_link->room->level != INT_MAX)
@@ -78,21 +82,21 @@ t_path		*create_paths(t_frame *stor)
 
 	t_path		*path;
 	t_link		*lev1;
-	int			i;
+	int			paths_ct;
 
-	i = -1;
+	paths_ct = -1;
 	path = NULL;
 	if (!stor)
 		lem_error(PATH_ERR, NULL);
 	lev1 = stor->start->links;
-	while (++i < stor->start->num_links)
+	while (++paths_ct < stor->start->num_links)
 	{
 		path = create_path_node(stor);
 		construct_path(path, lev1, stor);
 		add_path(path, stor);
 		lev1 = lev1->next;
 	}
-	print_path_list(stor);	// tmp func for testing	**** DELETE
+	// print_path_list(stor);	// tmp func for testing	**** DELETE
 
 	return (path);
 }

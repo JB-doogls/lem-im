@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/11 20:54:51 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 01:24:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void		get_start_end_room(t_frame *stor, t_room *room)
 	if (stor->cmd == START_SIG)
 	{
 		stor->start = room;
+		room->ants = stor->num_ants;
 		room->level = 0;
 		stor->cmd = NO_SIG;
 	}
@@ -42,6 +43,7 @@ static void 	set_room_params(t_room *room, char **split)
 {
 	room->coord[0] = ft_atoi(split[1]);
 	room->coord[1] = ft_atoi(split[2]);
+	room->ants = 0;
 	room->level = -1;
 	room->num_links = 0;
 	room->output_links = 0;

@@ -16,9 +16,10 @@ r4-end
 
 ## 20 ants | 3 paths
 
-## path1: start-r1-r6-r4-end
-## path2: start-r2-r7-r5-r3-r8-end
-## path3: start-r9-r10-end
+## path1: start-r9-r10-end				| ants_togo = 8
+## path2: start-r1-r6-r4-end			| ants_togo = 7
+## path3: start-r2-r7-r5-r3-r8-end		| ants_togo = 5
+
 
 20
 r1 8 5

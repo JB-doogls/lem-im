@@ -83,7 +83,7 @@ void		print_path(t_path *path, int ct)
 	printf("\n----- PRINT PATH #%d | len = %d -----\n", ct, path->len);
 	while (copy)
 	{
-		printf("room_%d = %s\n", i, copy->room->name);
+		printf("room_%d = %s\tants = %d\n", i, copy->room->name, copy->room->ants);
 		copy = copy->next;
 		i++;
 	}
@@ -101,6 +101,7 @@ void		print_path_list(t_frame *stor)
 	while (copy)
 	{
 		print_path(copy, ct);
+		printf("----- ants_togo = %d -----\n", copy->ants_togo);
 		copy = copy->next;
 		ct++;
 	}
