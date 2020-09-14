@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 18:49:46 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 00:53:17 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 23:49:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void		lem_error(char *str, t_frame *stor)
 
 void		free_paths(t_path *paths)
 {
-	t_path 		*path_copy;
 	t_link		*lev1;
+	t_path		*path_copy;
 	t_link		*lev1_copy;
 
 	if (!paths)
@@ -81,6 +81,7 @@ void		free_stor(t_frame *stor)
 	stor->input = NULL;
 	stor->map = NULL;
 	stor->map_copy = NULL;
+	stor->paths = NULL;
 	free(stor);
 }
 

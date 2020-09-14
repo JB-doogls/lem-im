@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:38:39 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 20:06:24 by user             ###   ########.fr       */
+/*   Updated: 2020/09/15 02:03:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_path		*create_path_node(t_frame *stor)
 	path->start = create_link(stor->start, stor);
 	path->end = NULL;
 	path->next = NULL;
+	path->on_work = 0;
 	path->len = 0;
 	path->ants_togo = 0;
 	path->ants_pass = 0;
@@ -56,12 +57,15 @@ void		add_path(t_path *path, t_frame *stor)
 
 /*
 **	Path->len var include only 'mid' level-rooms and exclude start & end rooms
+**	Path->end is the last 'mid' room of the path
+**	(in path contained only 2 room: start & end - path->end = end)
 */
 
 void		construct_path(t_path *path, t_link *lev1, t_frame *stor)
 {
 	t_link		*deep_link;
 	t_link		*path_link;
+
 
 	path_link = path->start;
 	path_link->next = create_link(lev1->room, stor);
@@ -76,17 +80,15 @@ void		construct_path(t_path *path, t_link *lev1, t_frame *stor)
 		path_link = path_link->next;
 		deep_link = deep_link->room->links->next;
 	}
-
-	path_link->next = create_link(deep_link->room, stor);
-	path_link->next->prev = path_link;
+	if (deep_link)
+		path_link->next = create_link(deep_link->room, stor);
+	path_link->next ? path_link->next->prev = path_link : NULL;
 	path->end = path_link;
 	path->len++;
 }
 
 t_path		*create_paths(t_frame *stor)
 {
-	set_levels(stor);		// tmp func to set bfs levels	**** DELETE
-
 	t_path		*path;
 	t_link		*lev1;
 	int			paths_ct;
@@ -95,15 +97,14 @@ t_path		*create_paths(t_frame *stor)
 	path = NULL;
 	if (!stor)
 		lem_error(PATH_ERR, NULL);
+	set_levels(stor);		// tmp func to set bfs levels	**** DELETE
 	lev1 = stor->start->links;
-	while (++paths_ct < stor->start->num_links)
+	while (lev1 && ++paths_ct < stor->start->num_links)
 	{
 		path = create_path_node(stor);
 		construct_path(path, lev1, stor);
 		add_path(path, stor);
 		lev1 = lev1->next;
 	}
-	// print_path_list(stor);	// tmp func for testing	**** DELETE
-
 	return (path);
 }

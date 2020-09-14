@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 20:14:21 by user             ###   ########.fr       */
+/*   Updated: 2020/09/15 00:28:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include "libft.h"
 # include "struct.h"
 
-
 # define START_SIG	1
 # define END_SIG	2
 # define NO_SIG		0
@@ -30,8 +29,8 @@
 **	Functions to parse input and create map
 */
 
-t_frame		*create_map();
-t_input		*read_input();
+t_frame		*create_map(void);
+t_input		*read_input(void);
 t_input		*create_input_item(char *line);
 
 t_room		*parse_input(t_input *input, t_frame *stor);
@@ -49,7 +48,7 @@ int			is_link(char *line, t_frame *stor);
 int			is_valid_map(t_frame *stor);
 
 int			handle_links(t_room *room, char *line, t_frame *stor);
-void		find_rooms(t_room *room, const char *r1, const char *r2, t_frame *stor);
+void		find_rooms(t_room *room, char *r1, char *r2, t_frame *stor);
 void		set_links(t_room *room1, t_room *room2, t_frame *stor);
 t_link		*create_link(t_room *room, t_frame *stor);
 
@@ -70,7 +69,6 @@ void		construct_path(t_path *path, t_link *lev1, t_frame *stor);
 void		add_path(t_path *path, t_frame *stor);
 t_path		*create_path_node(t_frame *stor);
 
-
 /*
 **	Functions to move ants
 */
@@ -78,15 +76,15 @@ t_path		*create_path_node(t_frame *stor);
 void		handle_ants_move(t_frame *stor);
 void		set_ants_on_paths(t_frame *stor);
 void		move_through_path(t_path *path, t_frame *stor);
-void		move_from_start(t_link *link, t_frame *stor);
+void		move_from_start(t_path * path, t_frame *stor);
 void		move_by_mid(t_link *link);
 void		move_to_end(t_link *link, t_path *path, t_frame *stor);
 void		print_ant_action(int ant_name, char *room_name);	// USE printf - refactore to ft_printf
-
+void		move_simple_path(t_path *path, t_frame *stor);
 
 /*
 **	JUST FOR TESTING ********************** DELETE
-*/ 
+*/
 
 void		print_input(t_input *input);
 void		print_room(t_room *room);

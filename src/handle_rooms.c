@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 20:09:16 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 22:49:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int		is_room_duplicates(t_room *room, t_room *new_room)
 {
 	if (!ft_strcmp(new_room->name, room->name) ||
-		(new_room->coord[0] == room->coord[0] && 
+		(new_room->coord[0] == room->coord[0] &&
 		new_room->coord[1] == room->coord[1]))
 		return (1);
 	return (0);
@@ -39,7 +39,7 @@ static void		get_start_end_room(t_frame *stor, t_room *room)
 	}
 }
 
-static void 	set_room_params(t_room *room, char **split)
+static void		set_room_params(t_room *room, char **split)
 {
 	room->coord[0] = ft_atoi(split[1]);
 	room->coord[1] = ft_atoi(split[2]);
@@ -90,7 +90,7 @@ t_room			*add_room(t_room *room, t_room *new_room, t_frame *stor)
 		if (tmp->next)
 			tmp = tmp->next;
 		else
-			break;
+			break ;
 	}
 	tmp->next = new_room;
 	return (room);

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 20:28:11 by user             ###   ########.fr       */
+/*   Updated: 2020/09/15 02:04:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 		{
 			if (is_room(input->line, stor))
 				link_flag ? lem_error(INPUT_ERR, stor) :
-				(stor->map = add_room(stor->map, create_room(stor, input->line), stor));
+				(stor->map = add_room(stor->map,
+				create_room(stor, input->line), stor));
 			else if (is_link(input->line, stor))
 				link_flag = handle_links(stor->map, input->line, stor);
 			else
@@ -89,7 +90,7 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 	return (stor->map_copy = stor->map);
 }
 
-t_frame		*create_map()
+t_frame		*create_map(void)
 {
 	t_room		*map;
 	t_input		*input;
@@ -103,6 +104,6 @@ t_frame		*create_map()
 	stor = init_storage(&input);
 	if (!(map = parse_input(input, stor)) || !is_valid_map(stor))
 		lem_error(NOT_ENOUGH_ERR, stor);
-	input_print_and_free(stor);		// для печати и удаления прочтенного ввода.
+	input_print_and_free(stor);
 	return (stor);
 }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 16:38:28 by edoll             #+#    #+#             */
-/*   Updated: 2020/09/11 15:20:56 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 23:06:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Function to handle splited arrays
 */
 
-int			ft_len_splited(char **split)
+int				ft_len_splited(char **split)
 {
 	int		i;
 
@@ -26,17 +26,17 @@ int			ft_len_splited(char **split)
 	return (i);
 }
 
-void		ft_free_splited(char **split)
+void			ft_free_splited(char **split)
 {
 	int		i;
 
 	i = 0;
 	if (!split || !*split)
-		return;
+		return ;
 	while (split[i])
-		free (split[i++]);
+		free(split[i++]);
 	free(split);
-	return;	
+	return ;
 }
 
 /*

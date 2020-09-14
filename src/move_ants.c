@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 01:52:24 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 20:41:52 by user             ###   ########.fr       */
+/*   Updated: 2020/09/15 02:03:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,16 @@ void		move_through_path(t_path *path, t_frame *stor)
 	t_link		*link;
 
 	link = path->end;
+	if (!path->on_work || link->room->level == INT_MAX)
+	{
+		link->room->level == INT_MAX ? move_simple_path(path, stor) :
+		move_from_start(path, stor);
+		return ;
+	}
 	while (link)
 	{
 		if (link->room->level == 0 && stor->start->ants)
-			move_from_start(link, stor);
+			move_from_start(path, stor);
 		else if (link->room->ants)
 		{
 			if (link->next->room->level == INT_MAX)
@@ -61,6 +67,8 @@ void		handle_ants_move(t_frame *stor)
 {
 	t_path		*path_copy;
 
+	if (!stor)
+		lem_error(ANTS_MOVE_ERR, stor);
 	path_copy = stor->paths;
 	set_ants_on_paths(stor);
 	while (stor->end->ants < stor->num_ants)
@@ -76,4 +84,6 @@ void		handle_ants_move(t_frame *stor)
 			printf("\n");				// refactore to ft_printf
 		}
 	}
+	if (stor->end->ants != stor->num_ants)
+		lem_error(MOVE_RES_ERR, stor);
 }
