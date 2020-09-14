@@ -20,8 +20,7 @@ r4-end
 ## path2: start-r1-r6-r4-end			| ants_togo = 7
 ## path3: start-r2-r7-r5-r3-r8-end		| ants_togo = 5
 
-
-20
+1000
 r1 8 5
 r2 4 9
 ##end

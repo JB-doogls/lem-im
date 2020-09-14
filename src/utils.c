@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:39:09 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 12:06:49 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 20:29:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		input_print_and_free(t_frame *stor)
 	input = stor->input;
 	while (input)
 	{
-		ft_putendl_fd(input->line, 0);
+		ft_putendl_fd(input->line, 1);
 		input = input->next;
 	}
 	// ft_putchar_fd('\n', 	0);			// do we need \n here ???

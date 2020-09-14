@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/14 20:08:45 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 20:28:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ t_frame		*create_map()
 	stor = init_storage(&input);
 	if (!(map = parse_input(input, stor)) || !is_valid_map(stor))
 		lem_error(NOT_ENOUGH_ERR, stor);
-	// input_print_and_free(stor);		// для печати и удаления прочтенного ввода.
+	input_print_and_free(stor);		// для печати и удаления прочтенного ввода.
 	return (stor);
 }
