@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:38:39 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 03:08:06 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 20:06:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ t_path		*create_path_node(t_frame *stor)
 	if (!(path = ft_calloc(1, sizeof(t_path))))
 		lem_error(PATH_ERR, stor);
 	path->start = create_link(stor->start, stor);
+	path->end = NULL;
 	path->next = NULL;
 	path->len = 0;
 	path->ants_togo = 0;
+	path->ants_pass = 0;
 	return (path);
 }
 
@@ -63,16 +65,21 @@ void		construct_path(t_path *path, t_link *lev1, t_frame *stor)
 
 	path_link = path->start;
 	path_link->next = create_link(lev1->room, stor);
+	path_link->next->prev = path_link;
 	path_link = path_link->next;
 	deep_link = path_link->room->links->next;
 	while (deep_link && deep_link->room->level != INT_MAX)
 	{
 		path_link->next = create_link(deep_link->room, stor);
 		path->len++;
+		path_link->next->prev = path_link;
 		path_link = path_link->next;
 		deep_link = deep_link->room->links->next;
 	}
+
 	path_link->next = create_link(deep_link->room, stor);
+	path_link->next->prev = path_link;
+	path->end = path_link;
 	path->len++;
 }
 

@@ -89,6 +89,24 @@ void		print_path(t_path *path, int ct)
 	}
 }
 
+void		printf_path_rev(t_path * path, int ct)
+{
+	t_link		*copy;
+	int			i;
+
+	i = 0;
+	copy = path->end;
+	if (!path)
+		return;
+	printf("\n----- PRINT PATH REV #%d | len = %d -----\n", ct, path->len);
+	while (copy)
+	{
+		printf("room_%d = %s\tants = %d\n", i, copy->room->name, copy->room->ants);
+		copy = copy->prev;
+		i++;	
+	}
+}
+
 void		print_path_list(t_frame *stor)
 {
 	t_path		*copy;
@@ -100,7 +118,8 @@ void		print_path_list(t_frame *stor)
 		return;
 	while (copy)
 	{
-		print_path(copy, ct);
+		// print_path(copy, ct);
+		printf_path_rev(copy, ct);
 		printf("----- ants_togo = %d -----\n", copy->ants_togo);
 		copy = copy->next;
 		ct++;

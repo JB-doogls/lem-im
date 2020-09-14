@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 09:23:10 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 02:34:42 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 20:14:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,18 @@ void		construct_path(t_path *path, t_link *lev1, t_frame *stor);
 void		add_path(t_path *path, t_frame *stor);
 t_path		*create_path_node(t_frame *stor);
 
+
+/*
+**	Functions to move ants
+*/
+
 void		handle_ants_move(t_frame *stor);
+void		set_ants_on_paths(t_frame *stor);
+void		move_through_path(t_path *path, t_frame *stor);
+void		move_from_start(t_link *link, t_frame *stor);
+void		move_by_mid(t_link *link);
+void		move_to_end(t_link *link, t_path *path, t_frame *stor);
+void		print_ant_action(int ant_name, char *room_name);	// USE printf - refactore to ft_printf
 
 
 /*

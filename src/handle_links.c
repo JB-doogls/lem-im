@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 19:42:43 by user              #+#    #+#             */
-/*   Updated: 2020/09/12 21:02:50 by user             ###   ########.fr       */
+/*   Updated: 2020/09/13 20:02:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_link		*create_link(t_room *room, t_frame *stor)
 		lem_error(LINKS_ERR, stor);
 	link->room = room;
 	link->next = NULL;
+	link->prev = NULL;
 	return (link);
 
 }	

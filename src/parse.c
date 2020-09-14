@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 14:01:22 by user              #+#    #+#             */
-/*   Updated: 2020/09/12 21:05:54 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 20:08:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	set_stor_params(t_frame *stor)
 	stor->map = NULL;
 	stor->map_copy = NULL;
 	stor->num_rooms = 0;
+	stor->ant_name = 1;
 	stor->cmd = NO_SIG;
 	stor->end = NULL;
 	stor->start = NULL;
@@ -85,8 +86,6 @@ t_room		*parse_input(t_input *input, t_frame *stor)
 		}
 		input = input->next;
 	}
-	// JUST FOR TESTING ***** DELETE
-	// print_room_list(stor, stor->map ? stor->map : NULL);
 	return (stor->map_copy = stor->map);
 }
 

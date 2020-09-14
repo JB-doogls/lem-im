@@ -2,6 +2,7 @@ lem_in_fallard/
 .vscode/
 obj/
 try.c
+tmp_files.c
 lem-in
 *.out
 *.o

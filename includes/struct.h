@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 02:34:30 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 20:13:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define CMD_ST_ERR		"ERROR: More than one ##start cmd"
 # define CMD_END_ERR	"ERROR: More than one ##end cmd"
 # define MEM_FREE_ERR	"ERROR: No memory to free on passed pointer"
-
 # define PATH_ERR		"ERROR: Path creation error"
 
 /*
@@ -52,6 +51,7 @@ struct				s_link
 {
 	t_room			*room;
 	t_link			*next;
+	t_link			*prev;
 };
 
 struct				s_room
@@ -59,6 +59,7 @@ struct				s_room
 	char			*name;
 	int				coord[2];
 	int				ants;
+	int				ant_name;
 	int				level;
 	int				num_links;
 	int				output_links;
@@ -71,9 +72,11 @@ struct				s_room
 struct				s_path
 {
 	t_link			*start;
+	t_link			*end;
 	t_path			*next;
 	int				len;
 	int				ants_togo;
+	int				ants_pass;
 };
 
 struct				s_frame
@@ -82,6 +85,7 @@ struct				s_frame
 	t_room			*end;
 	int				cmd;
 	int				num_ants;
+	int				ant_name;
 	int				num_rooms;
 	t_input			*input;
 	t_room			*map;

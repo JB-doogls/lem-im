@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 23:58:45 by user              #+#    #+#             */
-/*   Updated: 2020/09/13 01:24:09 by user             ###   ########.fr       */
+/*   Updated: 2020/09/14 20:09:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void 	set_room_params(t_room *room, char **split)
 	room->coord[0] = ft_atoi(split[1]);
 	room->coord[1] = ft_atoi(split[2]);
 	room->ants = 0;
+	room->ant_name = 0;
 	room->level = -1;
 	room->num_links = 0;
 	room->output_links = 0;
@@ -72,12 +73,6 @@ t_room			*create_room(t_frame *stor, char *line)
 	stor->num_rooms++;
 	return (room);
 }
-
-/*
-**	Держим указатель на head всегда возвращая room.
-**	Прокручиваемся от него в конец через копию
-**	и добавляем в конец списка new_room
-*/
 
 t_room			*add_room(t_room *room, t_room *new_room, t_frame *stor)
 {
