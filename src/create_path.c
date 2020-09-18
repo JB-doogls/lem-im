@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:38:39 by user              #+#    #+#             */
-/*   Updated: 2020/09/15 02:03:45 by user             ###   ########.fr       */
+/*   Updated: 2020/09/15 15:26:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,7 @@ t_path		*create_paths(t_frame *stor)
 		add_path(path, stor);
 		lev1 = lev1->next;
 	}
+	if (!path)
+		lem_error(NO_PATHS_ERR, stor);
 	return (path);
 }

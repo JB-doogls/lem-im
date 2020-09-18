@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 20:49:12 by user              #+#    #+#             */
-/*   Updated: 2020/09/15 01:54:21 by user             ###   ########.fr       */
+/*   Updated: 2020/09/15 16:06:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define CMD_END_ERR	"ERROR: More than one ##end cmd"
 # define MEM_FREE_ERR	"ERROR: No memory to free on passed pointer"
 # define PATH_ERR		"ERROR: Path creation error"
+# define NO_PATHS_ERR	"ERROR: No paths constructed"
 # define ANTS_MOVE_ERR	"ERROR: Ants moving error"
 # define MOVE_RES_ERR	"ERROR: Not all ants have reached the end"
 
